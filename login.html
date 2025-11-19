@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In | Sparkle Accessories</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme.css">
+
+    <!-- Dark Mode Toggle -->
+    <script src="theme-toggle.js" defer></script>
+
+    <style>
+        body {
+            background: var(--page-bg) !important;
+        }
+
+        .login-wrapper {
+            max-width: 420px;
+            margin: 70px auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .login-wrapper h1 {
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .login-wrapper label {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .cute-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .cute-link a {
+            color: #d63384;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .cute-link a:hover {
+            text-decoration: underline;
+        }
+
+        .sparkle-btn {
+            background: #ff4fa3 !important;
+            border: none !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="login-page">
+
+    <div class="login-wrapper">
+        <h1>Welcome Back 💖</h1>
+        <p>Please log in to access your account.</p>
+
+        <form method="POST" action="/login">
+            
+            <label>Email</label>
+            <input type="text" class="form-control mb-3" name="usern" placeholder="Enter your email">
+
+            <label>Password</label>
+            <input type="password" class="form-control mb-3" name="pw" placeholder="Enter your password">
+
+            <button class="btn sparkle-btn w-100 mt-2">Log In</button>
+        </form>
+
+        <div class="cute-link">
+            <p>Don't have an account? <a href="signin.html">Sign Up</a></p>
+            <p>Need to update or delete your account?  
+                <a href="account.html">Manage Account</a>
+            </p>
+        </div>
+    </div>
+
+    <footer class="mt-5 text-center">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="Catoegories.html">1</a></li>
+                <li class="page-item"><a class="page-link" href="Ratings.html">2</a></li>
+                <li class="page-item"><a class="page-link" href="stores.html">3</a></li>
+                <li class="page-item active"><a class="page-link" href="login.html">4</a></li>
+                <li class="page-item"><a class="page-link" href="signin.html">5</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>

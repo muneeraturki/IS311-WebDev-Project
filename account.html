@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Manage Account</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme.css">
+
+    <!-- Dark Mode Toggle -->
+    <script src="theme-toggle.js" defer></script>
+
+    <style>
+        .card {
+            background: #ffe1f0 !important;
+            border-radius: 12px;
+            border: 2px solid #ff9dce !important;
+        }
+
+        .btn-pink {
+            background: #ff4fa3;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 18px;
+            border: none;
+        }
+
+        .btn-pink:hover {
+            opacity: .8;
+        }
+
+        h2 { color: #b30059; }
+    </style>
+</head>
+
+<body>
+
+<header class="site-nav">
+    <div class="wrap">
+        <img src="IMG/set-women-female-accessories-lines-260nw-1985251244.webp" class="brand-logo">
+        <ul class="menu">
+            <li><a href="Catoegories.html">Home</a></li>
+            <li><a href="Ratings.html">Rating</a></li>
+            <li><a href="stores.html">Stores</a></li>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signin.html">Sign Up</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Manage Your Account</h2>
+
+    <div class="row justify-content-center">
+
+        <!-- UPDATE EMAIL -->
+        <div class="col-md-4">
+            <div class="card p-3 mb-4">
+                <h4>Update Email</h4>
+                <input id="oldEmail" class="form-control mb-2" placeholder="Old Email">
+                <input id="newEmail" class="form-control mb-2" placeholder="New Email">
+
+                <button class="btn-pink w-100" onclick="updateEmail()">Update Email</button>
+            </div>
+        </div>
+
+        <!-- UPDATE PASSWORD -->
+        <div class="col-md-4">
+            <div class="card p-3 mb-4">
+                <h4>Update Password</h4>
+                <input id="emailPw" class="form-control mb-2" placeholder="Email">
+                <input id="newPw" type="password" class="form-control mb-2" placeholder="New Password">
+
+                <button class="btn-pink w-100" onclick="updatePassword()">Update Password</button>
+            </div>
+        </div>
+
+        <!-- DELETE USER -->
+        <div class="col-md-4">
+            <div class="card p-3 mb-4">
+                <h4>Delete Account</h4>
+                <input id="deleteEmail" class="form-control mb-2" placeholder="Email to delete">
+
+                <button class="btn btn-danger w-100" onclick="deleteUser()">Delete User</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+/* UPDATE EMAIL */
+function updateEmail() {
+    fetch("/update-email", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            oldEmail: document.getElementById("oldEmail").value,
+            newEmail: document.getElementById("newEmail").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message || data.errmessage));
+}
+
+/* UPDATE PASSWORD */
+function updatePassword() {
+    fetch("/update-password", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            email: document.getElementById("emailPw").value,
+            pw: document.getElementById("newPw").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message || data.errmessage));
+}
+
+/* DELETE USER */
+function deleteUser() {
+    const email = document.getElementById("deleteEmail").value;
+
+    fetch(`/delete-user/${email}`, { method: "DELETE" })
+    .then(res => res.json())
+    .then(data => alert(data.message || data.errmessage));
+}
+</script>
+
+</body>
+</html>
